@@ -3,12 +3,8 @@ import { test, expect } from "@playwright/test";
 const { MAIL, PASSWORD } = process.env;
 
 test.beforeEach(async () => {
-  if (!MAIL) {
-    throw new Error("Error: mail was not provided");
-  }
-  if (!PASSWORD) {
-    throw new Error("Error: password was not provided");
-  }
+  expect(MAIL).toBeDefined();
+  expect(PASSWORD).toBeDefined();
 });
 
 test("auth", async ({ page }) => {
